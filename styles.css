@@ -1,0 +1,92 @@
+* { box-sizing: border-box; }
+:root {
+  --bg: #0b1220;
+  --panel: #0f172a;
+  --muted: #94a3b8;
+  --text: #e5e7eb;
+  --accent: #22c55e;
+  --accent-2: #16a34a;
+  --danger: #ef4444;
+  --grid: #1f2937;
+}
+html, body { height: 100%; }
+body {
+  margin: 0;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+  color: var(--text);
+  background: radial-gradient(1200px 800px at 80% 0%, #0d1730 0%, var(--bg) 50%), var(--bg);
+  display: grid;
+  place-items: center;
+}
+.container {
+  width: min(94vw, 640px);
+  padding: 20px;
+}
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 12px;
+}
+h1 {
+  font-size: 28px;
+  margin: 0;
+}
+.scores { display: grid; gap: 4px; text-align: right; }
+.score, .best { color: var(--muted); font-size: 14px; }
+
+.game-area {
+  background: var(--panel);
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+  display: grid;
+  place-items: center;
+}
+canvas#gameCanvas {
+  width: min(92vw, 400px);
+  height: min(92vw, 400px);
+  max-width: 400px;
+  max-height: 400px;
+  display: block;
+  background: linear-gradient(180deg, #0b1220 0%, #0a1020 100%);
+  border: 1px solid #1f2a44;
+  border-radius: 8px;
+}
+.overlay {
+  position: absolute;
+  margin-top: -220px; /* roughly center over canvas */
+  width: min(92vw, 400px);
+  max-width: 400px;
+  text-align: center;
+  background: rgba(2, 6, 23, 0.6);
+  backdrop-filter: blur(2px);
+  padding: 16px 12px;
+  border: 1px solid #213255;
+  border-radius: 8px;
+  color: var(--text);
+}
+.hidden { display: none; }
+
+.controls { margin-top: 14px; display: grid; gap: 8px; }
+.buttons-row { display: flex; gap: 8px; justify-content: center; }
+.btn {
+  appearance: none;
+  border: 1px solid #213255;
+  background: #0f1a32;
+  color: var(--text);
+  padding: 10px 16px;
+  border-radius: 10px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: transform 0.05s ease, background 0.2s ease, border 0.2s ease;
+}
+.btn:hover { background: #122040; }
+.btn:active { transform: translateY(1px) scale(0.98); }
+.btn.wide { width: 200px; }
+
+.footer { margin-top: 10px; text-align: center; color: var(--muted); font-size: 13px; }
+
+@media (min-width: 480px) {
+  .overlay { margin-top: -250px; }
+}
